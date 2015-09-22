@@ -9,13 +9,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    api = API('sabareeshk', 'valiyakkunnu')
-    print "heloo"
+    api = Bitbucket('sabareeshk', 'valiyakkunnu')
     result = api.get_commits('rawdatatech', 'proman', '41fa551e4d2315fe3d107595fbba026b9b181ac3')
-    pprint.pprint(result)
     return json.dumps(result)
 
-class API():
+class Bitbucket():
     api_url = 'http://bitbucket.org/api/2.0/'
 
     def __init__(self, username, password, proxy=None):
